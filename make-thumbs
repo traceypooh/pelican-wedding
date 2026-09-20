@@ -1,0 +1,51 @@
+#!/bin/zsh -eu
+
+# Generate the AVIF previews from the NAS mirror of the `pelican-wedding` item, plus
+# the one JPEG og:image.  Re-runnable: avif-blog-img skips outputs that already
+# exist, so an interrupted run picks up where it stopped.
+#
+#   make-thumbs                         # 1200px long edge, from /Volumes/poohpub
+#   make-thumbs /Volumes/other/mirror   # a different mirror
+#   LONG=2064 make-thumbs               # a different size
+#
+# Measured on 51 real frames, scaled to 501:
+#     800px   avg 153KB    ~75 MB
+#    1200px   avg 265KB   ~130 MB   <- default
+#    2064px   avg 613KB   ~301 MB
+
+REPO=${0:a:h}
+NAS=${1:-/Volumes/poohpub/pelican-wedding}
+LONG=${LONG:-1200}
+DIRS=(wed wed-bokeh wed-canon wed-misc wed-mom wed-nikon)
+AVIF=${AVIF:-$HOME/poohbot/bin/avif-blog-img}
+
+[[ -d $NAS ]] || { echo "no mirror at $NAS"; exit 1 }
+[[ -x $AVIF ]] || { echo "no avif-blog-img at $AVIF"; exit 1 }
+
+cd $NAS
+
+# Two wed-canon frames exist TWICE on the item: a stale 185KB 720x480 preview
+# (IMG_6836.JPG) and the real 2.5MB original that replaced it (IMG_6836.heic.jpg).
+# Both reduce to the same IMG_6836.avif, and avif-blog-img skips an output that
+# already exists -- so whichever it reaches first wins, and `.JPG` sorts before
+# `.heic.jpg`.  Left alone, the gallery would show the 720x480 previews.
+# ${^DIRS} distributes the /*.ext suffix across every element.  Plain ${DIRS} would
+# attach it to the LAST element only, silently encoding one directory and passing the
+# other five through as bare literal names.
+print -l ${^DIRS}/*.(jpg|jpeg|JPG|JPEG|heic|HEIC|heif)(N) \
+  | grep -vE '^wed-canon/IMG_(6836|6844)\.JPG$' \
+  | sort \
+  | xargs $AVIF -mirror $REPO -long $LONG -avifenc
+
+# og:image.  Social scrapers are patchy on AVIF and Slack renders none at all, so
+# this one stays JPEG -- 4:4:4, because the source is and lossy webp cannot be.
+echo "\nog:image ..."
+magick wed/DSC_9849.jpg -auto-orient -resize 1600x1600 \
+  -sampling-factor 4:4:4 -quality 90 $REPO/og.jpg
+exiftool -Orientation= -gps:all= -overwrite_original -quiet $REPO/og.jpg
+
+echo "\ncounting ..."
+COUNT=$(find $REPO/${^DIRS} -name '*.avif' 2>/dev/null | wc -l | tr -d ' ')
+echo "  $COUNT previews (expected 501)"
+du -shc $REPO/${^DIRS} 2>/dev/null | tail -1
+echo "\nnow:  build-index.js"

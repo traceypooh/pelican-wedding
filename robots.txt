@@ -1,0 +1,26 @@
+# Please don't crawl the wedding gallery.
+User-agent: *
+Disallow: /
+
+# NOTE: this file is only authoritative if this repo is served at a domain ROOT.
+#
+# Served as a GitHub Pages project page, the gallery lives at
+# traceypooh.github.io/pelican-wedding/ -- so this file lands at
+# /pelican-wedding/robots.txt, and crawlers do not look there.  The file they read is
+# https://traceypooh.github.io/robots.txt, which currently says "Disallow:" (empty --
+# allow everything) and is served from the user-site repo:
+#
+#     github.com/traceypooh/traceypooh.github.com
+#
+# Note the ".com", not ".io" -- it is the legacy user-site name, which GitHub still
+# serves at <user>.github.io.  There is no traceypooh.github.io repo.
+#
+# So either:
+#   1. change that file's "Disallow:" to "Disallow: /pelican-wedding/", or
+#   2. give this repo its own custom domain (a CNAME file), which makes this file
+#      the one that gets read.
+#
+# Until then the <meta name="robots" content="noindex, ..."> tag in index.html is
+# what actually keeps the page out of search results -- and it does more than a
+# Disallow would, since a disallowed URL can still be indexed from an inbound link
+# while a noindexed one is dropped outright.

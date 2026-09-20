@@ -1,0 +1,212 @@
+{
+  "_note": "Ported from poohbot misc/state.json (the photo-pick triage state). Times are naive wall-clock seconds (EXIF parsed as if UTC), matching bin/photo-index.js.",
+  "reference_dir": "wed",
+  "broken_clocks": [
+    "wed-canon"
+  ],
+  "offsets": {
+    "wed-nikon": -13677,
+    "wed-mom": -10800,
+    "wed-bokeh": -7369
+  },
+  "anchors": {
+    "wed-canon": [
+      {
+        "seq": 6581,
+        "time": 1786126500,
+        "from": "typed",
+        "to": "wed-canon/IMG_6581.JPG"
+      },
+      {
+        "seq": 6691,
+        "time": 1786136400,
+        "from": "typed",
+        "to": "wed-canon/IMG_6691.JPG"
+      },
+      {
+        "seq": 6695,
+        "time": 1786181400,
+        "from": "typed",
+        "to": "wed-canon/IMG_6695.JPG"
+      },
+      {
+        "seq": 6826,
+        "time": 1786206150,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6826"
+      },
+      {
+        "seq": 6827,
+        "time": 1786207050,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6827"
+      },
+      {
+        "seq": 6833,
+        "time": 1786207050,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6833"
+      },
+      {
+        "seq": 6845,
+        "time": 1786207950,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6845"
+      },
+      {
+        "seq": 6853,
+        "time": 1786207950,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6853"
+      },
+      {
+        "seq": 6855,
+        "time": 1786207950,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6855"
+      },
+      {
+        "seq": 6861,
+        "time": 1786209450,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6861"
+      },
+      {
+        "seq": 6896,
+        "time": 1786209750,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6896"
+      },
+      {
+        "seq": 6910,
+        "time": 1786210211,
+        "from": "wed/DSC_9551.JPG",
+        "to": "wed-canon/IMG_6910.JPG"
+      },
+      {
+        "seq": 6920,
+        "time": 1786211550,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6920"
+      },
+      {
+        "seq": 6928,
+        "time": 1786211850,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6928"
+      },
+      {
+        "seq": 6965,
+        "time": 1786213950,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6965"
+      },
+      {
+        "seq": 6973,
+        "time": 1786214250,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6973"
+      },
+      {
+        "seq": 6985,
+        "time": 1786214250,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6985"
+      },
+      {
+        "seq": 6986,
+        "time": 1786214250,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6986"
+      },
+      {
+        "seq": 6988,
+        "time": 1786214250,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6988"
+      },
+      {
+        "seq": 6989,
+        "time": 1786214250,
+        "from": "align.html",
+        "to": "wed-canon/IMG_6989"
+      },
+      {
+        "seq": 7009,
+        "time": 1786215150,
+        "from": "align.html",
+        "to": "wed-canon/IMG_7009"
+      },
+      {
+        "seq": 7016,
+        "time": 1786215150,
+        "from": "align.html",
+        "to": "wed-canon/IMG_7016"
+      },
+      {
+        "seq": 7018,
+        "time": 1786215150,
+        "from": "align.html",
+        "to": "wed-canon/IMG_7018"
+      },
+      {
+        "seq": 7022,
+        "time": 1786215150,
+        "from": "align.html",
+        "to": "wed-canon/IMG_7022"
+      },
+      {
+        "seq": 7046,
+        "time": 1786222500,
+        "from": "typed",
+        "to": "wed-canon/IMG_7046.JPG"
+      },
+      {
+        "seq": 7048,
+        "time": 1786267800,
+        "from": "typed",
+        "to": "wed-canon/IMG_7048.JPG"
+      },
+      {
+        "seq": 7059,
+        "time": 1786269600,
+        "from": "typed",
+        "to": "wed-canon/IMG_7059.JPG"
+      }
+    ]
+  },
+  "times": {
+    "_note": "Hand-placed frames with no EXIF at all (the three selfies). Estimated from the blog narrative; adjust freely, the build script just reads them.",
+    "wed-misc/selfie-bridesmaids": 1786209450,
+    "wed-misc/selfie-cake": 1786209450,
+    "wed-misc/selfie-cake-cut": 1786223940,
+    "wed-canon/IMG_6844": 1786207950,
+    "wed-canon/IMG_6836": 1786207050
+  },
+  "photographers": {
+    "wed": {
+      "who": "Reenie Raschke",
+      "note": "paid professional -- full event"
+    },
+    "wed-bokeh": {
+      "who": "Russ bokeh lens",
+      "note": "brother, pro A/V; Russian swirly-bokeh lens"
+    },
+    "wed-mom": {
+      "who": "Mom's Nikon",
+      "note": "her parents were professional photographers"
+    },
+    "wed-nikon": {
+      "who": "Russ Nikon",
+      "note": "Nikon D5200, Russ's second body"
+    },
+    "wed-canon": {
+      "who": "Tara / Jannah",
+      "note": "Canon 70D, shared between the twin sisters through the event; dead coin cell, so placed by hand anchors"
+    },
+    "wed-misc": {
+      "who": "Friends + selfies",
+      "note": "phones (network-synced) + three selfies"
+    }
+  }
+}

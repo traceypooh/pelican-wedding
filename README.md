@@ -18,6 +18,9 @@ directories of imagery plus a short list of files:
 ```
 make-thumbs         originals -> AVIF previews
 build-index.js      AVIF previews -> index.html
+make-originals.js   archive.org item -> originals.json
+make-align.js       -> align.html, the tool for fixing a camera's clock
+clock.js            where each photo sits in time; shared by the build and the tool
 clocks.json         clock corrections, so the timeline is one merged story
 originals.json      501 stems -> the exact filename each has on archive.org
 zip-on-the-fly.js   the pick-and-zip download button
@@ -59,6 +62,26 @@ that already exists, and `.JPG` sorts first, so the gallery would quietly fill w
 ./make-thumbs        # NAS mirror -> ./wed*/**.avif + og.jpg   (~130MB at 1200px)
 ./build-index.js     # the AVIF tree -> index.html
 ```
+
+
+### Adding more photographs later
+
+Say more of the photographer's frames arrive. Put them on the archive.org item and
+the NAS mirror under the same `<dir>/<basename>` they already use, then:
+
+```sh
+./make-originals.js   # re-read the item -> originals.json   (--dry-run to preview)
+./make-thumbs         # encodes only what is missing
+./build-index.js
+```
+
+Nothing else has to change. `make-originals.js` refuses to write if two originals
+would claim one preview name, and prints exactly which frames are new or gone.
+
+New frames from a camera whose clock is already solved need no alignment work at all
+— the offset in `clocks.json` applies to the whole roll, however much of it turns up
+later. That is the practical reward for `wed` being the reference: its clock was
+right to begin with, so its frames drop straight into the timeline.
 
 `make-thumbs` takes the mirror path as its first argument and honours `LONG=` for the
 long edge. Measured on 51 real frames, scaled to 501:

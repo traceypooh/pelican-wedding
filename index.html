@@ -94,6 +94,15 @@ body[data-cols="3"] .grid { grid-template-columns: repeat(3, 1fr) }
 .who { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
 .when { flex: none; font-variant-numeric: tabular-nums }
 
+/* Scrolls away with the page rather than sticking -- it is worth reading once, not
+   worth a permanent strip of the window on a page that is entirely photographs. */
+.intro {
+  color: var(--dim); font-size: 13px; line-height: 1.5;
+  padding: 14px 16px 2px; max-width: 70ch;
+}
+.intro p { margin: 0 0 6px }
+.intro a { color: var(--accent) }
+
 footer { color: var(--dim); font-size: 13px; padding: 26px 16px 50px; text-align: center }
 footer a { color: var(--accent) }
 
@@ -119,6 +128,16 @@ footer a { color: var(--accent) }
        phones -- which is where "download the lot" is most likely to be wanted. -->
   <nav id="site-nav"><span id="site-nav-menu"></span></nav>
 </header>
+
+<section class="intro">
+<p>Every frame links to its full-size original on
+<a href="https://archive.org/details/pelican-wedding">archive.org</a>.
+Use the <strong>&darr;</strong> button above to pick several and download them as one zip.</p>
+<p><strong>~</strong> before a time means it is estimated. Only
+Reenie Raschke&rsquo;s
+camera kept reliable time; the others are placed by a measured offset, or&mdash;where
+the clock was beyond saving&mdash;by hand.</p>
+</section>
 
 <main class="grid">
 <figure class="shot"><a href="https://archive.org/serve/pelican-wedding/wed-canon/IMG_6581.JPG" title="full-size original (IMG_6581.JPG)"><img src="wed-canon/IMG_6581.avif" width="480" height="720" alt="Wedding photo by Tara / Jannah, about Fri 6:15pm" loading="lazy" decoding="async"></a><figcaption><span class="who">Tara / Jannah</span><span class="when" title="estimated -- this camera's clock was not reliable">~Fri 6:15pm</span></figcaption></figure>

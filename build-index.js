@@ -202,6 +202,18 @@ function figure(p) {
 function page(photos, stats) {
   const og = 'og.jpg'
   const title = 'Pelican Inn Wedding'
+  // Shown at the top AND repeated in the footer.  The top copy is the one that gets
+  // read -- nobody scrolls 501 photographs to find out the pictures are clickable --
+  // but the footer copy is what someone who HAS scrolled that far will look for.
+  // Defined once so the two cannot drift apart.
+  // "above" holds in both positions: the button lives in the sticky header.
+  const blurb = `<p>Every frame links to its full-size original on
+<a href="https://archive.org/details/${ITEM}">archive.org</a>.
+Use the <strong>&darr;</strong> button above to pick several and download them as one zip.</p>
+<p><strong>~</strong> before a time means it is estimated. Only
+${esc(clocks.photographers[clocks.reference_dir]?.who ?? clocks.reference_dir)}&rsquo;s
+camera kept reliable time; the others are placed by a measured offset, or&mdash;where
+the clock was beyond saving&mdash;by hand.</p>`
   const desc = `${photos.length} photographs from our wedding at the Pelican Inn, `
     + `Muir Beach -- August 8, 2026.  Click any frame for the full-size original.`
 
@@ -301,6 +313,15 @@ body[data-cols="3"] .grid { grid-template-columns: repeat(3, 1fr) }
 .who { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
 .when { flex: none; font-variant-numeric: tabular-nums }
 
+/* Scrolls away with the page rather than sticking -- it is worth reading once, not
+   worth a permanent strip of the window on a page that is entirely photographs. */
+.intro {
+  color: var(--dim); font-size: 13px; line-height: 1.5;
+  padding: 14px 16px 2px; max-width: 70ch;
+}
+.intro p { margin: 0 0 6px }
+.intro a { color: var(--accent) }
+
 footer { color: var(--dim); font-size: 13px; padding: 26px 16px 50px; text-align: center }
 footer a { color: var(--accent) }
 
@@ -327,18 +348,16 @@ footer a { color: var(--accent) }
   <nav id="site-nav"><span id="site-nav-menu"></span></nav>
 </header>
 
+<section class="intro">
+${blurb}
+</section>
+
 <main class="grid">
 ${photos.map(figure).join('\n')}
 </main>
 
 <footer>
-<p>Every frame links to its full-size original on
-<a href="https://archive.org/details/${ITEM}">archive.org</a>.
-Use the <strong>&darr;</strong> button above to pick several and download them as one zip.</p>
-<p><strong>~</strong> before a time means it is estimated. Only
-${esc(clocks.photographers[clocks.reference_dir]?.who ?? clocks.reference_dir)}&rsquo;s
-camera kept reliable time; the others are placed by a measured offset, or&mdash;where
-the clock was beyond saving&mdash;by hand.</p>
+${blurb}
 <p>${esc(stats)}</p>
 </footer>
 

@@ -210,7 +210,7 @@ should be ported back:
 > 494 files with nothing saying so. The fix qualifies **only** the names that
 > actually clash (`wed/DSC_0145.JPG`), so an ordinary pick still unzips flat.
 
-It imports lit and client-zip from `esm.ext.archive.org` at runtime. The upstream
+It imports lit and client-zip from `esm.archive.org` at runtime. The upstream
 copy ships vendored fallbacks under its `js/vendor/`; they are deliberately **not** here,
 to keep this repo mostly photographs.
 
